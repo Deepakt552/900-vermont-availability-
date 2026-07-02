@@ -6,72 +6,28 @@ use App\Http\Controllers\Controller;
 use App\Models\Unit;
 use App\Models\Floor;
 use App\Models\UnitType;
+use App\Models\Building;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Storage;
 
-class UnitController extends Controller
+class NexusUnitController extends Controller
 {
     public function index()
     {
-        $units = Unit::with(['floor.building', 'unitType'])
-            ->orderBy('floor_id')
-            ->orderBy('unit_number')
-            ->get();
+        $building = Building::where('name', 'Northridge Nexus')->first();
+        
+        $units = [];
+        if ($building) {
+            $units = Unit::whereIn('floor_id', $building->floors->pluck('id'))
+                ->with(['floor.building', 'unitType'])
+                ->orderBy('floor_id')
+                ->orderBy('unit_number')
+                ->get();
+        }
 
-        return Inertia::render('Admin/Units/Index', [
+        return Inertia::render('Admin/NexusUnits/Index', [
             'units' => $units
-        ]);
-    }
-
-    public function create()
-    {
-        $floors = Floor::with('building')->get();
-        $unitTypes = UnitType::all();
-
-        return Inertia::render('Admin/Units/Create', [
-            'floors' => $floors,
-            'unitTypes' => $unitTypes
-        ]);
-    }
-
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'floor_id' => 'required|exists:floors,id',
-            'unit_type_id' => 'required|exists:unit_types,id',
-            'unit_number' => 'required|string',
-            'status' => 'required|in:available,occupied,maintenance,reserved',
-            'price' => 'required|numeric|min:0',
-            'available_date' => 'nullable|date',
-            'coordinates' => 'nullable|array',
-            'notes' => 'nullable|string'
-        ]);
-
-        Unit::create($validated);
-
-        return redirect()->route('admin.units.index')
-            ->with('success', 'Unit created successfully.');
-    }
-
-    public function show(Unit $unit)
-    {
-        $unit->load(['floor.building', 'unitType']);
-
-        return Inertia::render('Admin/Units/Show', [
-            'unit' => $unit
-        ]);
-    }
-
-    public function edit(Unit $unit)
-    {
-        $floors = Floor::with('building')->get();
-        $unitTypes = UnitType::all();
-        $unit->load(['floor.building', 'unitType']);
-
-        return Inertia::render('Admin/Units/Edit', [
-            'unit' => $unit,
-            'floors' => $floors,
-            'unitTypes' => $unitTypes
         ]);
     }
 
@@ -90,16 +46,8 @@ class UnitController extends Controller
 
         $unit->update($validated);
 
-        return redirect()->route('admin.units.index')
-            ->with('success', 'Unit updated successfully.');
-    }
-
-    public function destroy(Unit $unit)
-    {
-        $unit->delete();
-
-        return redirect()->route('admin.units.index')
-            ->with('success', 'Unit deleted successfully.');
+        return redirect()->route('admin.nexus-units.index')
+            ->with('success', 'Nexus unit updated successfully.');
     }
 
     public function updateStatus(Request $request, Unit $unit)
@@ -157,8 +105,8 @@ class UnitController extends Controller
         $imagePath = str_replace(asset('storage/'), '', $imageUrl);
         
         // Delete from storage
-        if (\Storage::disk('public')->exists($imagePath)) {
-            \Storage::disk('public')->delete($imagePath);
+        if (Storage::disk('public')->exists($imagePath)) {
+            Storage::disk('public')->delete($imagePath);
         }
 
         // Remove from array

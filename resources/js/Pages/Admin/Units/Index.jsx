@@ -5,6 +5,7 @@ import InteractiveFloorPlan from '@/Components/InteractiveFloorPlan';
 import ImageUpload from '@/Components/ImageUpload';
 import toast, { Toaster } from 'react-hot-toast';
 import { Dialog, DialogTitle } from '@headlessui/react';
+import { CheckCircle, XCircle } from 'lucide-react';
 
 export default function Index({ auth, units = [] }) {
     const [filter, setFilter] = useState('all');
@@ -18,6 +19,8 @@ export default function Index({ auth, units = [] }) {
     const [selectedUnits, setSelectedUnits] = useState([]);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [editingUnit, setEditingUnit] = useState(null);
+    const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+    const [errorMessages, setErrorMessages] = useState([]);
 
     // Get unique floors for filter dropdown
     const availableFloors = useMemo(() => {
@@ -58,81 +61,33 @@ export default function Index({ auth, units = [] }) {
         setHasChanges(true);
     };
 
-    const saveChanges = async () => {
+    const saveChanges = () => {
         if (!hasChanges) return;
-
         const loadingToast = toast.loading('Saving changes...');
 
-        try {
-            const updates = Object.entries(editingUnits);
-            let successCount = 0;
-
-            for (const [unitId, changes] of updates) {
-                // Handle status updates separately using the status route
-                if (changes.status) {
-                    const originalUnit = units.find(u => u.id.toString() === unitId);
-                    await new Promise((resolve, reject) => {
-                        router.patch(`/admin/units/${unitId}/status`, {
-                            status: changes.status
-                        }, {
-                            preserveScroll: true,
-                            onSuccess: () => {
-                                successCount++;
-                                resolve();
-                            },
-                            onError: (errors) => {
-                                console.error('Status update error for unit', unitId, ':', errors);
-                                reject(errors);
-                            }
-                        });
-                    });
-                }
-
-                // Handle price updates using the main update route
-                if (changes.price) {
-                    const originalUnit = units.find(u => u.id.toString() === unitId);
-                    if (!originalUnit) continue;
-
-                    const updateData = {
-                        price: changes.price,
-                        // Include required fields from original unit
-                        floor_id: originalUnit.floor?.id,
-                        unit_number: originalUnit.unit_number,
-                        unit_type_id: originalUnit.unit_type?.id,
-                        status: originalUnit.status, // Keep original status if not being updated
-                    };
-
-                    await new Promise((resolve, reject) => {
-                        router.patch(`/admin/units/${unitId}`, updateData, {
-                            preserveScroll: true,
-                            onSuccess: () => {
-                                if (!changes.status) successCount++; // Only increment if status wasn't already counted
-                                resolve();
-                            },
-                            onError: (errors) => {
-                                console.error('Price update error for unit', unitId, ':', errors);
-                                reject(errors);
-                            }
-                        });
-                    });
-                }
+        router.patch('/admin/units/bulk-update', {
+            updates: editingUnits
+        }, {
+            preserveScroll: true,
+            onSuccess: () => {
+                toast.dismiss(loadingToast);
+                toast.success('All unit updates saved successfully!', {
+                    icon: <CheckCircle className="w-5 h-5 text-emerald-500" />,
+                });
+                setEditingUnits({});
+                setHasChanges(false);
+            },
+            onError: (err) => {
+                toast.dismiss(loadingToast);
+                triggerErrorModal(err);
             }
+        });
+    };
 
-            toast.dismiss(loadingToast);
-            toast.success(`${successCount} unit(s) updated successfully!`, {
-                duration: 3000,
-                icon: '✅',
-            });
-            setEditingUnits({});
-            setHasChanges(false);
-        } catch (error) {
-            toast.dismiss(loadingToast);
-            toast.error('Failed to save some changes', {
-                duration: 4000,
-                icon: '❌',
-            });
-            console.error('Save changes error:', error);
-        }
+    const triggerErrorModal = (errors) => {
+        const msgs = Object.values(errors).flat();
+        setErrorMessages(msgs.length > 0 ? msgs : ['An unexpected error occurred. Please verify inputs.']);
+        setIsErrorModalOpen(true);
     };
 
     const openEditModal = (unit) => {
@@ -151,14 +106,14 @@ export default function Index({ auth, units = [] }) {
                 toast.dismiss(loadingToast);
                 toast.success(`Unit ${unitNumber} status updated to ${newStatus}!`, {
                     duration: 3000,
-                    icon: '✅',
+                    icon: <CheckCircle className="w-5 h-5 text-emerald-500" />,
                 });
             },
             onError: (errors) => {
                 toast.dismiss(loadingToast);
                 toast.error(`Failed to update unit ${unitNumber}`, {
                     duration: 4000,
-                    icon: '❌',
+                    icon: <XCircle className="w-5 h-5 text-red-500" />,
                 });
             }
         });
@@ -709,19 +664,16 @@ export default function Index({ auth, units = [] }) {
                                             toast.dismiss(loadingToast);
                                             toast.success(`Unit ${editingUnit.unit_number} updated successfully!`, {
                                                 duration: 3000,
-                                                icon: '✅',
+                                                icon: <CheckCircle className="w-5 h-5 text-emerald-500" />,
                                             });
                                             setIsEditModalOpen(false);
                                             setEditingUnit(null);
                                         },
                                         onError: (errors) => {
-                                            toast.dismiss(loadingToast);
-                                            toast.error(`Failed to update unit ${editingUnit.unit_number}`, {
-                                                duration: 4000,
-                                                icon: '❌',
-                                            });
-                                            console.error('Update errors:', errors);
-                                        }
+                                             toast.dismiss(loadingToast);
+                                             triggerErrorModal(errors);
+                                             console.error('Update errors:', errors);
+                                         }
                                     });
                                 }}
                                 className="px-6 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200"
@@ -798,6 +750,42 @@ export default function Index({ auth, units = [] }) {
                                     Close
                                 </button>
                             </div>
+                        </div>
+                    </Dialog.Panel>
+                </div>
+            </Dialog>
+            {/* Reusable Error Modal */}
+            <Dialog open={isErrorModalOpen} onClose={() => setIsErrorModalOpen(false)} className="relative z-[60]">
+                <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" aria-hidden="true" />
+                <div className="fixed inset-0 flex items-center justify-center p-4">
+                    <Dialog.Panel className="mx-auto max-w-md w-full bg-white rounded-2xl shadow-2xl overflow-hidden border border-red-100">
+                        <div className="bg-red-50 p-6 flex items-center space-x-3 border-b border-red-100">
+                            <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-650">
+                                <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <DialogTitle className="text-lg font-bold text-red-950">Action Failed</DialogTitle>
+                                <p className="text-xs text-red-600">Please review the details below</p>
+                            </div>
+                        </div>
+
+                        <div className="p-6 space-y-3 max-h-60 overflow-y-auto">
+                            {errorMessages.map((msg, index) => (
+                                <p key={index} className="text-sm text-gray-700 leading-relaxed pl-2.5 border-l-2 border-red-500">
+                                    {msg}
+                                </p>
+                            ))}
+                        </div>
+
+                        <div className="bg-gray-50 px-6 py-4 flex justify-end">
+                            <button
+                                onClick={() => setIsErrorModalOpen(false)}
+                                className="px-5 py-2.5 bg-black text-white hover:bg-neutral-850 rounded-xl text-sm font-bold transition-colors"
+                            >
+                                Close Window
+                            </button>
                         </div>
                     </Dialog.Panel>
                 </div>

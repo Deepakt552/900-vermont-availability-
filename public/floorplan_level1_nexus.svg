@@ -1,0 +1,176 @@
+<svg width="1400" height="880" viewBox="0 0 1400 880" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <rect x="0" y="0" width="1400" height="880" fill="#ffffff"/>
+  <defs>
+    <style>
+      .wall { fill:none; stroke:#111; stroke-width:3; stroke-linejoin:round; }
+      .partition { fill:none; stroke:#333; stroke-width:1.4; }
+      .room { fill:#f7f7f7; stroke:#333; stroke-width:1.2; }
+      .roomAlt { fill:#eef2f6; stroke:#333; stroke-width:1.2; }
+      .lid { fill:#e3e3e3; stroke:#666; stroke-width:1; }
+      .openspace { fill:#f2f7f2; stroke:#2f7d32; stroke-width:1.4; stroke-dasharray:6 4; }
+      .parkingzone { fill:#eef3fb; stroke:#1565c0; stroke-width:1.4; stroke-dasharray:5 4; }
+      .grid { stroke:#9aa; stroke-width:1; stroke-dasharray:4 4; }
+      .bubble { fill:#ffffff; stroke:#111; stroke-width:1.4; }
+      .label-room { font-size:14px; font-weight:700; fill:#111; text-anchor:middle; }
+      .label-sub { font-size:11px; fill:#333; text-anchor:middle; }
+      .label-small { font-size:8.5px; fill:#333; text-anchor:middle; }
+      .label-tag { font-size:11px; fill:#111; text-anchor:middle; }
+      .label-title { font-size:22px; fill:#111; font-weight:800; }
+    </style>
+  </defs>
+
+  <text x="40" y="35" class="label-title">LEVEL 1 FLOOR PLAN</text>
+
+  <g transform="translate(1330,45)">
+    <circle cx="0" cy="0" r="24" fill="#fff" stroke="#111" stroke-width="1.3"/>
+    <polygon points="0,-18 5,4 0,-2 -5,4" fill="#111"/>
+    <text x="0" y="16" text-anchor="middle" font-size="10" font-weight="700">N</text>
+  </g>
+
+  <!-- top grid -->
+  <line x1="150" y1="110" x2="150" y2="760" class="grid"/>
+  <circle cx="150" cy="105" r="15" class="bubble"/><text x="150" y="109" class="label-tag">15</text>
+  <line x1="290" y1="110" x2="290" y2="760" class="grid"/>
+  <circle cx="290" cy="105" r="15" class="bubble"/><text x="290" y="109" class="label-tag">14</text>
+  <line x1="1180" y1="110" x2="1180" y2="760" class="grid"/>
+  <circle cx="1180" cy="105" r="15" class="bubble"/><text x="1180" y="109" class="label-tag">1</text>
+
+  <!-- left grid -->
+  <line x1="100" y1="175" x2="1230" y2="175" class="grid"/>
+  <circle cx="70" cy="175" r="14" class="bubble"/><text x="70" y="179" class="label-tag">F</text>
+  <line x1="100" y1="215" x2="1230" y2="215" class="grid"/>
+  <circle cx="70" cy="215" r="14" class="bubble"/><text x="70" y="219" class="label-tag" font-size="8.5">E.9</text>
+  <line x1="100" y1="250" x2="1230" y2="250" class="grid"/>
+  <circle cx="70" cy="250" r="14" class="bubble"/><text x="70" y="254" class="label-tag" font-size="8.5">E.5</text>
+  <line x1="100" y1="300" x2="1230" y2="300" class="grid"/>
+  <circle cx="70" cy="300" r="14" class="bubble"/><text x="70" y="304" class="label-tag" font-size="9">XE</text>
+  <line x1="100" y1="350" x2="1230" y2="350" class="grid"/>
+  <circle cx="70" cy="350" r="14" class="bubble"/><text x="70" y="354" class="label-tag" font-size="8.5">D.6</text>
+  <line x1="100" y1="470" x2="1230" y2="470" class="grid"/>
+  <circle cx="70" cy="470" r="14" class="bubble"/><text x="70" y="474" class="label-tag" font-size="8.5">C.6</text>
+  <line x1="100" y1="555" x2="1230" y2="555" class="grid"/>
+  <circle cx="70" cy="555" r="14" class="bubble"/><text x="70" y="559" class="label-tag" font-size="8.5">B.5</text>
+  <line x1="100" y1="585" x2="1230" y2="585" class="grid"/>
+  <circle cx="70" cy="585" r="14" class="bubble"/><text x="70" y="589" class="label-tag" font-size="9">XA</text>
+  <line x1="100" y1="680" x2="1230" y2="680" class="grid"/>
+  <circle cx="70" cy="680" r="14" class="bubble"/><text x="70" y="684" class="label-tag" font-size="8.5">A.3</text>
+  <line x1="100" y1="735" x2="1230" y2="735" class="grid"/>
+  <circle cx="70" cy="735" r="14" class="bubble"/><text x="70" y="739" class="label-tag">A</text>
+
+  <!-- building outline -->
+  <path class="wall" d="M150,170
+      L150,125 L290,125 L290,170
+      L850,170 L850,125 L1090,125
+      Q1150,125 1150,190
+      L1150,720
+      L210,720
+      Q130,720 115,660
+      L115,595
+      Q115,550 150,530
+      Z" fill="#ffffff"/>
+
+  <!-- ============ COMMON OPEN SPACE + PARKING (right zone) ============ -->
+  <rect x="855" y="185" width="285" height="580" class="parkingzone"/>
+  <rect x="875" y="200" width="245" height="290" class="openspace"/>
+  <text x="997" y="345" class="label-room" font-size="13">COMMON OPEN SPACE</text>
+
+  <rect x="895" y="215" width="50" height="80" fill="#fff" stroke="#555" stroke-width="1"/>
+  <text x="920" y="258" class="label-small" transform="rotate(-90 920,258)">STANDARD</text>
+  <rect x="950" y="215" width="50" height="80" fill="#fff" stroke="#555" stroke-width="1"/>
+  <text x="975" y="258" class="label-small" transform="rotate(-90 975,258)">STANDARD</text>
+  <rect x="1005" y="215" width="50" height="80" fill="#fff" stroke="#555" stroke-width="1"/>
+  <text x="1030" y="258" class="label-small" transform="rotate(-90 1030,258)">STANDARD</text>
+
+  <text x="997" y="565" class="label-room" font-size="13">PARKING AT GROUND LEVEL</text>
+  <text x="997" y="583" class="label-sub">(OPEN TO SKY)</text>
+  <line x1="920" y1="610" x2="920" y2="660" stroke="#1565c0" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <text x="920" y="675" class="label-small" fill="#1565c0">VEHICULAR ENTRY TO</text>
+  <text x="920" y="687" class="label-small" fill="#1565c0">BASEMENT PARKING</text>
+
+  <rect x="1075" y="615" width="50" height="55" class="room"/>
+  <text x="1100" y="640" class="label-sub" font-size="9">STAIR</text>
+  <text x="1100" y="652" class="label-small">TO GRADE</text>
+
+  <defs>
+    <marker id="arrow1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#1565c0"/>
+    </marker>
+  </defs>
+
+  <!-- ============ UNIT K / UNIT L (upper-left wing) ============ -->
+  <rect x="150" y="125" width="140" height="110" class="room" data-unit="102"/>
+  <text x="220" y="175" class="label-room">UNIT K</text><text x="220" y="192" class="label-sub">102</text>
+
+  <line x1="150" y1="235" x2="290" y2="235" class="partition"/>
+  <rect x="150" y="235" width="140" height="110" class="room" data-unit="101"/>
+  <text x="220" y="285" class="label-room">UNIT L</text><text x="220" y="302" class="label-sub">101</text>
+
+  <rect x="155" y="215" width="16" height="16" class="lid"/><text x="163" y="227" class="label-small" font-size="7">LID</text>
+
+  <!-- ============ LOBBY / STAIR A / ELEV / REC ROOM / TRASH ============ -->
+  <line x1="150" y1="345" x2="290" y2="345" class="partition"/>
+  <rect x="150" y="345" width="90" height="80" class="roomAlt"/>
+  <text x="195" y="380" class="label-room" font-size="12">LOBBY</text>
+  <text x="195" y="396" class="label-small">BUILDING ENTRY</text>
+
+  <rect x="240" y="345" width="50" height="40" class="roomAlt"/>
+  <text x="265" y="368" class="label-sub" font-weight="700" font-size="9">STAIR A</text>
+  <rect x="240" y="385" width="50" height="40" class="roomAlt"/>
+  <text x="265" y="408" class="label-sub" font-weight="700" font-size="9">ELEV</text>
+
+  <rect x="150" y="425" width="90" height="130" class="room"/>
+  <text x="195" y="485" class="label-room">REC ROOM</text><text x="195" y="502" class="label-sub">100</text>
+
+  <rect x="240" y="425" width="50" height="65" class="room"/>
+  <text x="265" y="452" class="label-room" font-size="11">TRASH</text><text x="265" y="467" class="label-sub">113</text>
+
+  <rect x="240" y="490" width="50" height="65" class="room"/>
+  <text x="265" y="518" class="label-small">OPEN</text><text x="265" y="530" class="label-small">SPACE</text>
+
+  <!-- ============ CORRIDOR ROW: UNIT G / G / G / Q / BIKE / STAIR B ============ -->
+  <line x1="150" y1="555" x2="1150" y2="555" stroke="#111" stroke-width="1.6"/>
+  <line x1="150" y1="680" x2="855" y2="680" stroke="#111" stroke-width="1.6"/>
+
+  <rect x="290" y="590" width="110" height="90" class="room" data-unit="119"/>
+  <text x="345" y="630" class="label-room">UNIT G</text><text x="345" y="647" class="label-sub">119</text>
+  <rect x="292" y="570" width="16" height="16" class="lid"/><text x="300" y="582" class="label-small" font-size="7">LID</text>
+
+  <line x1="400" y1="590" x2="400" y2="680" class="partition"/>
+  <rect x="400" y="590" width="110" height="90" class="room" data-unit="118"/>
+  <text x="455" y="630" class="label-room">UNIT G</text><text x="455" y="647" class="label-sub">118</text>
+  <rect x="402" y="570" width="16" height="16" class="lid"/><text x="410" y="582" class="label-small" font-size="7">LID</text>
+
+  <line x1="510" y1="590" x2="510" y2="680" class="partition"/>
+  <rect x="510" y="590" width="110" height="90" class="room" data-unit="117"/>
+  <text x="565" y="630" class="label-room">UNIT G</text><text x="565" y="647" class="label-sub">117</text>
+  <rect x="512" y="570" width="16" height="16" class="lid"/><text x="520" y="582" class="label-small" font-size="7">LID</text>
+
+  <line x1="620" y1="590" x2="620" y2="680" class="partition"/>
+  <rect x="620" y="590" width="105" height="90" class="room" data-unit="116"/>
+  <text x="672" y="630" class="label-room">UNIT Q</text><text x="672" y="647" class="label-sub">116</text>
+  <rect x="622" y="570" width="16" height="16" class="lid"/><text x="630" y="582" class="label-small" font-size="7">LID</text>
+
+  <line x1="725" y1="590" x2="725" y2="680" class="partition"/>
+  <rect x="725" y="590" width="130" height="48" class="roomAlt"/>
+  <text x="790" y="618" class="label-room" font-size="12">BIKE ROOM</text>
+  <text x="790" y="632" class="label-small">16 BIKES</text>
+  <rect x="725" y="638" width="130" height="42" class="room"/>
+  <text x="790" y="662" class="label-sub" font-size="9">STAIR B</text>
+
+  <!-- ============ ELECTRICAL ROOM ============ -->
+  <rect x="855" y="590" width="95" height="90" class="room"/>
+  <text x="902" y="628" class="label-room" font-size="12">ELECTRICAL</text>
+  <text x="902" y="643" class="label-sub">ROOM</text>
+  <text x="902" y="658" class="label-sub">111</text>
+
+  <!-- small legend -->
+  <g transform="translate(40,780)">
+    <rect x="0" y="0" width="620" height="70" fill="#fff" stroke="#111" stroke-width="1"/>
+    <rect x="10" y="12" width="14" height="14" class="lid"/><text x="32" y="23" font-size="10">LID (light well)</text>
+    <rect x="170" y="12" width="14" height="14" class="roomAlt"/><text x="192" y="23" font-size="10">Stair / Elevator</text>
+    <rect x="330" y="12" width="14" height="14" class="openspace"/><text x="352" y="23" font-size="10">Open space</text>
+    <rect x="470" y="12" width="14" height="14" class="parkingzone"/><text x="492" y="23" font-size="10">Below-grade access</text>
+    <circle cx="17" cy="42" r="8" class="bubble"/><text x="32" y="46" font-size="10">Grid reference</text>
+    <text x="170" y="46" font-size="9" fill="#555">Units: K, L, G&#215;3, Q · Lobby, Rec Room, Trash, Stair A/B, Elev, Electrical</text>
+  </g>
+</svg>

@@ -1,5 +1,16 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link } from '@inertiajs/react';
+import { 
+    Building2, 
+    CheckCircle2, 
+    XCircle, 
+    TrendingUp, 
+    PlusCircle, 
+    Map, 
+    Activity, 
+    DollarSign, 
+    Percent 
+} from 'lucide-react';
 
 export default function Dashboard({ auth, stats = {} }) {
     const {
@@ -16,196 +27,151 @@ export default function Dashboard({ auth, stats = {} }) {
         {
             title: 'Total Units',
             value: totalUnits,
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-2 0H7m5 0v-5a2 2 0 00-2-2H8a2 2 0 00-2 2v5m6 0V9a2 2 0 00-2-2H8a2 2 0 00-2 2v8" />
-                </svg>
-            ),
-            color: 'bg-black',
-            textColor: 'text-white'
+            icon: Building2,
+            color: 'bg-white text-black border border-gray-200',
+            iconColor: 'text-black'
         },
         {
             title: 'Available',
             value: availableUnits,
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            ),
-            color: 'bg-gray-100',
-            textColor: 'text-black'
+            icon: CheckCircle2,
+            color: 'bg-white text-green-700 border border-gray-200',
+            iconColor: 'text-green-600'
         },
         {
             title: 'Occupied',
             value: occupiedUnits,
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-                </svg>
-            ),
-            color: 'bg-gray-800',
-            textColor: 'text-white'
+            icon: XCircle,
+            color: 'bg-white text-red-700 border border-gray-200',
+            iconColor: 'text-red-600'
         },
         {
             title: 'Occupancy Rate',
             value: `${occupancyRate}%`,
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-            ),
-            color: 'bg-black',
-            textColor: 'text-white'
+            icon: Percent,
+            color: 'bg-white text-indigo-700 border border-gray-200',
+            iconColor: 'text-indigo-600'
         }
     ];
 
     const quickActions = [
         {
-            title: 'Manage Units',
-            description: 'View and edit unit information, pricing, and availability',
+            title: 'Manage 900 Units',
+            description: 'View and edit units, pricing, and availability in The 900 Building',
             href: '/admin/units',
-            icon: (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-2 0H7m5 0v-5a2 2 0 00-2-2H8a2 2 0 00-2 2v5m6 0V9a2 2 0 00-2-2H8a2 2 0 00-2 2v8" />
-                </svg>
-            )
+            icon: Building2,
         },
         {
-            title: 'Add New Unit',
-            description: 'Create a new unit listing with details and images',
-            href: '/admin/units/create',
-            icon: (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-            )
+            title: 'Manage Nexus Units',
+            description: 'View and edit units, pricing, and availability in Northridge Nexus',
+            href: '/admin/nexus-units',
+            icon: Building2,
         },
         {
             title: 'Floor Plans',
             description: 'View interactive floor plans and unit layouts',
             href: '/floor-plans/dynamic',
-            icon: (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                </svg>
-            )
-        },
-        {
-            title: 'Reports',
-            description: 'Generate occupancy and revenue reports',
-            href: '#',
-            icon: (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-            )
+            icon: Map,
         }
     ];
 
     return (
         <AuthenticatedLayout user={auth.user}>
-            <Head title="Dashboard" />
+            <Head title="Admin Dashboard" />
 
-            <div className="min-h-screen bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="min-h-screen bg-gray-50 py-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Modern Header */}
                     <div className="mb-8">
-                        <h1 className="text-4xl font-bold text-black mb-2">
+                        <h1 className="text-3xl font-black text-black tracking-tight mb-2">
                             Dashboard
                         </h1>
-                        <p className="text-lg text-gray-600">
-                            Welcome back, {auth.user.name}. Here's what's happening with your property.
+                        <p className="text-gray-600 text-sm">
+                            Welcome back, <strong className="text-black font-semibold">{auth.user.name}</strong>. Here's the current state of your properties.
                         </p>
                     </div>
 
                     {/* Stats Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                        {quickStats.map((stat, index) => (
-                            <div key={index} className={`${stat.color} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105`}>
-                                <div className="flex items-center justify-between">
-                                    <div>
-                                        <p className={`text-sm font-medium ${stat.textColor} opacity-80`}>
-                                            {stat.title}
-                                        </p>
-                                        <p className={`text-3xl font-bold ${stat.textColor} mt-2`}>
-                                            {stat.value}
-                                        </p>
-                                    </div>
-                                    <div className={`${stat.textColor} opacity-80`}>
-                                        {stat.icon}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                        {quickStats.map((stat, index) => {
+                            const Icon = stat.icon;
+                            return (
+                                <div key={index} className={`${stat.color} rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300`}>
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                                {stat.title}
+                                            </p>
+                                            <p className="text-3xl font-black text-black mt-2">
+                                                {stat.value}
+                                            </p>
+                                        </div>
+                                        <div className={`p-3 bg-gray-50 rounded-xl ${stat.iconColor}`}>
+                                            <Icon className="w-6 h-6" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
 
                     {/* Quick Actions */}
-                    <div className="mb-8">
-                        <h2 className="text-2xl font-bold text-black mb-6">Quick Actions</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {quickActions.map((action, index) => (
-                                <Link
-                                    key={index}
-                                    href={action.href}
-                                    className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg hover:border-black transition-all duration-300 transform hover:scale-105 group"
-                                >
-                                    <div className="flex items-center mb-4">
-                                        <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-300">
-                                            {action.icon}
+                    <div className="mb-10">
+                        <h2 className="text-lg font-bold text-black mb-5 uppercase tracking-wider">Quick Portals</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {quickActions.map((action, index) => {
+                                const Icon = action.icon;
+                                return (
+                                    <Link
+                                        key={index}
+                                        href={action.href}
+                                        className="bg-white border border-gray-250 rounded-2xl p-6 hover:shadow-md hover:border-black transition-all duration-300 group flex flex-col justify-between"
+                                    >
+                                        <div>
+                                            <div className="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center text-gray-700 group-hover:bg-black group-hover:text-white transition-all duration-300 mb-4">
+                                                <Icon className="w-5 h-5" />
+                                            </div>
+                                            <h3 className="text-base font-bold text-black mb-2 group-hover:text-black">
+                                                {action.title}
+                                            </h3>
+                                            <p className="text-gray-500 text-xs leading-relaxed">
+                                                {action.description}
+                                            </p>
                                         </div>
-                                    </div>
-                                    <h3 className="text-lg font-bold text-black mb-2 group-hover:text-black">
-                                        {action.title}
-                                    </h3>
-                                    <p className="text-gray-600 text-sm">
-                                        {action.description}
-                                    </p>
-                                </Link>
-                            ))}
+                                        <span className="text-xs font-bold text-black mt-4 flex items-center group-hover:translate-x-1 transition-transform">
+                                            Open Portal →
+                                        </span>
+                                    </Link>
+                                );
+                            })}
                         </div>
                     </div>
 
                     {/* Recent Activity */}
-                    <div className="bg-white border border-gray-200 rounded-2xl p-6">
-                        <h2 className="text-2xl font-bold text-black mb-6">Recent Activity</h2>
+                    <div className="bg-white border border-gray-250 rounded-2xl p-6">
+                        <h2 className="text-lg font-bold text-black mb-5 uppercase tracking-wider flex items-center gap-2">
+                            <Activity className="w-4 h-4 text-gray-500" />
+                            <span>Recent Portfolio Activity</span>
+                        </h2>
                         <div className="space-y-4">
-                            <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl">
-                                <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center">
-                                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-                                    </svg>
+                            {[
+                                { title: 'Unit 204 status updated', desc: 'Changed from Available to Occupied', time: '2 hours ago', bg: 'bg-black text-white' },
+                                { title: 'Unit 315 rent updated', desc: 'Price changed to $2,800/month', time: '5 hours ago', bg: 'bg-neutral-800 text-white' },
+                                { title: 'New images uploaded', desc: 'Unit 108 received 3 new photos', time: '1 day ago', bg: 'bg-black text-white' }
+                            ].map((activity, idx) => (
+                                <div key={idx} className="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100/70 transition-colors">
+                                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold ${activity.bg}`}>
+                                        ✓
+                                    </div>
+                                    <div className="flex-1">
+                                        <p className="text-sm font-bold text-black">{activity.title}</p>
+                                        <p className="text-xs text-gray-500 mt-0.5">{activity.desc} • {activity.time}</p>
+                                    </div>
                                 </div>
-                                <div className="flex-1">
-                                    <p className="text-sm font-semibold text-black">Unit 204 status updated</p>
-                                    <p className="text-xs text-gray-500">Changed from Available to Occupied • 2 hours ago</p>
-                                </div>
-                            </div>
-                            
-                            <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl">
-                                <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
-                                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <p className="text-sm font-semibold text-black">Unit 315 rent updated</p>
-                                    <p className="text-xs text-gray-500">Price changed to $2,800/month • 5 hours ago</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl">
-                                <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center">
-                                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <p className="text-sm font-semibold text-black">New images uploaded</p>
-                                    <p className="text-xs text-gray-500">Unit 108 received 3 new photos • 1 day ago</p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
+
                 </div>
             </div>
         </AuthenticatedLayout>

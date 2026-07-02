@@ -10,10 +10,26 @@ class FloorPlanController extends Controller
 {
     public function dynamic()
     {
-        // Get all units with their relationships for the modern floor plan
-        $units = Unit::with(['unitType', 'floor'])->get();
+        // Get all units with their relationships for The 900 Apartments
+        $units = Unit::with(['unitType', 'floor.building'])
+            ->whereHas('floor.building', function ($query) {
+                $query->where('name', 'The 900 Apartments');
+            })->get();
         
         return Inertia::render('FloorPlan/Modern', [
+            'units' => $units
+        ]);
+    }
+
+    public function nexus()
+    {
+        // Get all units with their relationships for Northridge Nexus
+        $units = Unit::with(['unitType', 'floor.building'])
+            ->whereHas('floor.building', function ($query) {
+                $query->where('name', 'Northridge Nexus');
+            })->get();
+        
+        return Inertia::render('FloorPlan/Nexus', [
             'units' => $units
         ]);
     }

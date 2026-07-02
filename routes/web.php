@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FloorPlanController;
 use App\Http\Controllers\Admin\UnitController;
 use App\Http\Controllers\Admin\BuildingController;
+use App\Http\Controllers\Admin\NexusUnitController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -45,6 +46,7 @@ Route::get('/privacy-policy', function () {
 
 // Public floor plan routes
 Route::get('/floor-plans/dynamic', [FloorPlanController::class, 'dynamic'])->name('floor-plans.dynamic');
+Route::get('/floor-plans/nexus', [FloorPlanController::class, 'nexus'])->name('floor-plans.nexus');
 Route::get('/api/units/{unit}', [FloorPlanController::class, 'getUnitDetails'])->name('units.details');
 Route::get('/api/units-data', [FloorPlanController::class, 'getUnitsData'])->name('units.data');
 
@@ -60,10 +62,19 @@ Route::middleware('auth')->group(function () {
     // Admin routes
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('buildings', BuildingController::class);
+        Route::patch('units/bulk-update', [UnitController::class, 'bulkUpdate'])->name('units.bulk-update');
         Route::resource('units', UnitController::class);
         Route::patch('units/{unit}/status', [UnitController::class, 'updateStatus'])->name('units.status');
         Route::post('units/upload-images', [UnitController::class, 'uploadImages'])->name('units.upload-images');
         Route::delete('units/{unit}/images/{imageIndex}', [UnitController::class, 'removeImage'])->name('units.remove-image');
+        
+        // Nexus units routes
+        Route::patch('nexus-units/bulk-update', [NexusUnitController::class, 'bulkUpdate'])->name('nexus-units.bulk-update');
+        Route::get('nexus-units', [NexusUnitController::class, 'index'])->name('nexus-units.index');
+        Route::patch('nexus-units/{unit}', [NexusUnitController::class, 'update'])->name('nexus-units.update');
+        Route::patch('nexus-units/{unit}/status', [NexusUnitController::class, 'updateStatus'])->name('nexus-units.status');
+        Route::post('nexus-units/upload-images', [NexusUnitController::class, 'uploadImages'])->name('nexus-units.upload-images');
+        Route::delete('nexus-units/{unit}/images/{imageIndex}', [NexusUnitController::class, 'removeImage'])->name('nexus-units.remove-image');
     });
 });
 

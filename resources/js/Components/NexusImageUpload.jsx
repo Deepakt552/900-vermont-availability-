@@ -3,7 +3,7 @@ import { router } from '@inertiajs/react';
 import toast from 'react-hot-toast';
 import { UploadCloud, Trash2, CheckCircle, XCircle } from 'lucide-react';
 
-export default function ImageUpload({ unit, onImagesUpdated }) {
+export default function NexusImageUpload({ unit, onImagesUpdated }) {
     const [uploading, setUploading] = useState(false);
     const [dragActive, setDragActive] = useState(false);
     const fileInputRef = useRef(null);
@@ -20,7 +20,7 @@ export default function ImageUpload({ unit, onImagesUpdated }) {
         setUploading(true);
         const loadingToast = toast.loading(`Uploading ${files.length} image${files.length > 1 ? 's' : ''}...`);
 
-        router.post('/admin/units/upload-images', formData, {
+        router.post('/admin/nexus-units/upload-images', formData, {
             forceFormData: true,
             preserveScroll: true,
             onSuccess: (response) => {
@@ -76,7 +76,7 @@ export default function ImageUpload({ unit, onImagesUpdated }) {
     const removeImage = (imageIndex) => {
         const loadingToast = toast.loading('Removing image...');
         
-        router.delete(`/admin/units/${unit.id}/images/${imageIndex}`, {
+        router.delete(`/admin/nexus-units/${unit.id}/images/${imageIndex}`, {
             preserveScroll: true,
             onSuccess: () => {
                 toast.dismiss(loadingToast);
@@ -99,22 +99,19 @@ export default function ImageUpload({ unit, onImagesUpdated }) {
     };
 
     return (
-        <div className="space-y-4">
-            {/* Upload Area */}
+        <div className="space-y-6">
+            {/* Drag & Drop Area */}
             <div
-                className={`relative border-2 border-dashed rounded-xl p-6 text-center transition-all duration-200 ${
+                onDragEnter={handleDrag}
+                onDragOver={handleDrag}
+                onDragLeave={handleDrag}
+                onDrop={handleDrop}
+                onClick={() => fileInputRef.current?.click()}
+                className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all ${
                     dragActive
                         ? 'border-black bg-gray-50'
-                        : uploading
-                        ? 'border-gray-300 bg-gray-50'
-                        : 'border-gray-300 hover:border-gray-405 hover:bg-gray-50'
+                        : 'border-gray-300 hover:border-gray-400 bg-gray-50/50'
                 }`}
-                onDragEnter={handleDrag}
-                onDragLeave={handleDrag}
-                onDragOver={handleDrag}
-                onDrop={handleDrop}
-                onClick={() => !uploading && fileInputRef.current?.click()}
-                style={{ cursor: uploading ? 'not-allowed' : 'pointer' }}
             >
                 <input
                     ref={fileInputRef}
@@ -125,57 +122,42 @@ export default function ImageUpload({ unit, onImagesUpdated }) {
                     className="hidden"
                     disabled={uploading}
                 />
-
-                {uploading ? (
-                    <div className="flex flex-col items-center">
-                        <UploadCloud className="w-8 h-8 text-black animate-bounce mb-2" />
-                        <p className="text-sm font-semibold text-gray-700">Uploading images...</p>
+                
+                <div className="flex flex-col items-center space-y-3">
+                    <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-gray-500">
+                        <UploadCloud className="w-6 h-6" />
                     </div>
-                ) : (
-                    <div className="flex flex-col items-center">
-                        <UploadCloud className="h-12 w-12 text-gray-400 mb-3" />
-                        <h3 className="text-base font-semibold text-gray-900 mb-1">Upload Unit Images</h3>
-                        <p className="text-xs text-gray-500 mb-4">
-                            Drag and drop images here, or click to select files
+                    <div>
+                        <p className="text-sm font-semibold text-gray-700">
+                            {uploading ? 'Uploading images...' : 'Click to upload or drag & drop'}
                         </p>
-                        <button
-                            type="button"
-                            className="bg-black hover:bg-neutral-900 text-white px-5 py-2 rounded-xl transition-all duration-200 font-bold text-xs uppercase tracking-wider"
-                        >
-                            Choose Images
-                        </button>
-                        <p className="text-[10px] text-gray-400 mt-3 font-semibold uppercase tracking-wider">
-                            Supports: JPG, PNG, GIF (Max 10MB each)
+                        <p className="text-xs text-gray-500 mt-1">
+                            PNG, JPG, JPEG, GIF up to 10MB per image
                         </p>
                     </div>
-                )}
+                </div>
             </div>
 
-            {/* Current Images */}
-            {unit.images && unit.images.length > 0 && (
-                <div className="pt-2">
-                    <h4 className="text-sm font-bold text-gray-900 mb-3 uppercase tracking-wider">
-                        Current Images ({unit.images.length})
-                    </h4>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                        {unit.images.map((image, index) => (
-                            <div key={index} className="relative group aspect-[4/3] rounded-lg overflow-hidden border border-gray-200 bg-gray-50">
+            {/* Images Grid */}
+            {unit.images && unit.images.length > 0 ? (
+                <div className="space-y-3">
+                    <h3 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wider">Current Images</h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        {unit.images.map((imgUrl, idx) => (
+                            <div key={idx} className="relative group aspect-[4/3] rounded-lg overflow-hidden border border-gray-200">
                                 <img
-                                    src={image}
-                                    alt={`Unit ${unit.unit_number} - Image ${index + 1}`}
+                                    src={imgUrl}
+                                    alt={`Unit image ${idx + 1}`}
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-                                    onError={(e) => {
-                                        e.target.src = '/images/placeholder-unit.svg';
-                                    }}
                                 />
                                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all">
                                     <button
                                         onClick={(e) => {
                                             e.stopPropagation();
-                                            removeImage(index);
+                                            removeImage(idx);
                                         }}
-                                        className="w-8 h-8 rounded-full bg-red-600 hover:bg-red-700 text-white flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-all duration-150"
-                                        title="Remove image"
+                                        className="w-8 h-8 rounded-full bg-red-650 hover:bg-red-700 text-white flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-all duration-150"
+                                        title="Remove Image"
                                     >
                                         <Trash2 className="w-4 h-4" />
                                     </button>
@@ -183,6 +165,10 @@ export default function ImageUpload({ unit, onImagesUpdated }) {
                             </div>
                         ))}
                     </div>
+                </div>
+            ) : (
+                <div className="text-center py-6 text-gray-500 text-sm">
+                    No images uploaded yet.
                 </div>
             )}
         </div>
