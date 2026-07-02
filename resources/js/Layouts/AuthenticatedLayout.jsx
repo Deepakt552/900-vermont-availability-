@@ -1,176 +1,233 @@
-import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
+import {
+    LayoutDashboard,
+    Building2,
+    Map,
+    User,
+    Settings,
+    LogOut,
+    Menu,
+    X
+} from 'lucide-react';
 
 export default function AuthenticatedLayout({ header, children }) {
     const user = usePage().props.auth.user;
-
-    const [showingNavigationDropdown, setShowingNavigationDropdown] =
-        useState(false);
+    const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
-        <div className="min-h-screen bg-gray-100">
-            <nav className="border-b border-gray-100 bg-white">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="flex h-16 justify-between">
-                        <div className="flex">
-                            <div className="flex shrink-0 items-center">
-                                <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
-                                </Link>
+        <div className="min-h-screen bg-gray-50">
+            {/* Clean Modern Header */}
+            <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex justify-between items-center h-16">
+                        
+                        {/* Modern Logo */}
+                        <Link href="/" className="flex items-center space-x-3 group">
+                            <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center group-hover:bg-gray-800 transition-colors duration-200">
+                                <span className="text-white font-bold text-lg">9</span>
                             </div>
+                            <div className="hidden sm:block">
+                                <h1 className="text-xl font-bold text-gray-900">THE 900</h1>
+                                <p className="text-xs text-gray-500 uppercase tracking-wide">Property Admin</p>
+                            </div>
+                        </Link>
 
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink
-                                    href={route('dashboard')}
-                                    active={route().current('dashboard')}
-                                >
-                                    Dashboard
-                                </NavLink>
-                            </div>
+                        {/* Desktop Navigation */}
+                        <div className="hidden md:flex items-center space-x-1">
+                            <NavLink
+                                href={route('dashboard')}
+                                active={route().current('dashboard')}
+                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center ${
+                                    route().current('dashboard')
+                                        ? 'bg-black text-white'
+                                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                                }`}
+                            >
+                                <LayoutDashboard className="w-4 h-4 mr-2" />
+                                Dashboard
+                            </NavLink>
+
+                            <NavLink
+                                href="/admin/units"
+                                active={route().current('admin.units.*')}
+                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center ${
+                                    route().current('admin.units.*')
+                                        ? 'bg-black text-white'
+                                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                                }`}
+                            >
+                                <Building2 className="w-4 h-4 mr-2" />
+                                Units
+                            </NavLink>
+
+                            <NavLink
+                                href="/floor-plans/dynamic"
+                                className="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all duration-200 flex items-center"
+                            >
+                                <Map className="w-4 h-4 mr-2" />
+                                Floor Plans
+                            </NavLink>
                         </div>
 
-                        <div className="hidden sm:ms-6 sm:flex sm:items-center">
-                            <div className="relative ms-3">
-                                <Dropdown>
-                                    <Dropdown.Trigger>
-                                        <span className="inline-flex rounded-md">
-                                            <button
-                                                type="button"
-                                                className="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none"
-                                            >
-                                                {user.name}
+                        {/* User Menu */}
+                        <div className="hidden md:flex items-center">
+                            <Dropdown>
+                                <Dropdown.Trigger>
+                                    <button className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors duration-200">
+                                        <div className="w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center">
+                                            <span className="text-white text-sm font-semibold">
+                                                {user.name.charAt(0).toUpperCase()}
+                                            </span>
+                                        </div>
+                                        <div className="text-left">
+                                            <div className="text-sm font-medium text-gray-900">{user.name}</div>
+                                            <div className="text-xs text-gray-500">Admin</div>
+                                        </div>
+                                    </button>
+                                </Dropdown.Trigger>
 
-                                                <svg
-                                                    className="-me-0.5 ms-2 h-4 w-4"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    </Dropdown.Trigger>
+                                <Dropdown.Content className="w-64 bg-white border border-gray-200 rounded-xl shadow-lg mt-2">
+                                    {/* Profile Section */}
+                                    <div className="px-4 py-3 border-b border-gray-100">
+                                        <div className="flex items-center space-x-3">
+                                            <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
+                                                <span className="text-white font-semibold">
+                                                    {user.name.charAt(0).toUpperCase()}
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <div className="font-medium text-gray-900">{user.name}</div>
+                                                <div className="text-sm text-gray-500">{user.email}</div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                    <Dropdown.Content>
+                                    {/* Menu Items */}
+                                    <div className="py-1">
                                         <Dropdown.Link
                                             href={route('profile.edit')}
+                                            className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-150"
                                         >
-                                            Profile
+                                            <Settings className="w-4 h-4 mr-3" />
+                                            Profile Settings
                                         </Dropdown.Link>
+                                        
+                                        <div className="border-t border-gray-100 my-1"></div>
+                                        
                                         <Dropdown.Link
                                             href={route('logout')}
                                             method="post"
                                             as="button"
+                                            className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-150"
                                         >
-                                            Log Out
+                                            <LogOut className="w-4 h-4 mr-3" />
+                                            Sign Out
                                         </Dropdown.Link>
-                                    </Dropdown.Content>
-                                </Dropdown>
-                            </div>
+                                    </div>
+                                </Dropdown.Content>
+                            </Dropdown>
                         </div>
 
-                        <div className="-me-2 flex items-center sm:hidden">
+                        {/* Mobile Menu Button */}
+                        <div className="md:hidden">
                             <button
-                                onClick={() =>
-                                    setShowingNavigationDropdown(
-                                        (previousState) => !previousState,
-                                    )
-                                }
-                                className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
+                                onClick={() => setShowingNavigationDropdown(!showingNavigationDropdown)}
+                                className="p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-200"
                             >
-                                <svg
-                                    className="h-6 w-6"
-                                    stroke="currentColor"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        className={
-                                            !showingNavigationDropdown
-                                                ? 'inline-flex'
-                                                : 'hidden'
-                                        }
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M4 6h16M4 12h16M4 18h16"
-                                    />
-                                    <path
-                                        className={
-                                            showingNavigationDropdown
-                                                ? 'inline-flex'
-                                                : 'hidden'
-                                        }
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                </svg>
+                                {showingNavigationDropdown ? (
+                                    <X className="w-6 h-6" />
+                                ) : (
+                                    <Menu className="w-6 h-6" />
+                                )}
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div
-                    className={
-                        (showingNavigationDropdown ? 'block' : 'hidden') +
-                        ' sm:hidden'
-                    }
-                >
-                    <div className="space-y-1 pb-3 pt-2">
+                {/* Mobile Menu */}
+                <div className={`md:hidden border-t border-gray-200 bg-white transition-all duration-300 ${
+                    showingNavigationDropdown ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+                }`}>
+                    <div className="px-4 py-4 space-y-2">
+                        {/* Mobile Navigation */}
                         <ResponsiveNavLink
                             href={route('dashboard')}
                             active={route().current('dashboard')}
+                            className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                                route().current('dashboard')
+                                    ? 'bg-black text-white'
+                                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                            }`}
                         >
+                            <LayoutDashboard className="w-5 h-5 mr-3" />
                             Dashboard
                         </ResponsiveNavLink>
-                    </div>
 
-                    <div className="border-t border-gray-200 pb-1 pt-4">
-                        <div className="px-4">
-                            <div className="text-base font-medium text-gray-800">
-                                {user.name}
-                            </div>
-                            <div className="text-sm font-medium text-gray-500">
-                                {user.email}
-                            </div>
-                        </div>
+                        <ResponsiveNavLink
+                            href="/admin/units"
+                            active={route().current('admin.units.*')}
+                            className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                                route().current('admin.units.*')
+                                    ? 'bg-black text-white'
+                                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                            }`}
+                        >
+                            <Building2 className="w-5 h-5 mr-3" />
+                            Units
+                        </ResponsiveNavLink>
 
-                        <div className="mt-3 space-y-1">
-                            <ResponsiveNavLink href={route('profile.edit')}>
-                                Profile
+                        <ResponsiveNavLink
+                            href="/floor-plans/dynamic"
+                            className="flex items-center px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-200"
+                        >
+                            <Map className="w-5 h-5 mr-3" />
+                            Floor Plans
+                        </ResponsiveNavLink>
+
+                        {/* Mobile User Section */}
+                        <div className="pt-4 mt-4 border-t border-gray-200">
+                            <div className="flex items-center space-x-3 px-3 py-2 mb-3">
+                                <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
+                                    <span className="text-white font-semibold">
+                                        {user.name.charAt(0).toUpperCase()}
+                                    </span>
+                                </div>
+                                <div>
+                                    <div className="font-medium text-gray-900">{user.name}</div>
+                                    <div className="text-sm text-gray-500">{user.email}</div>
+                                </div>
+                            </div>
+
+                            <ResponsiveNavLink
+                                href={route('profile.edit')}
+                                className="flex items-center px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-200"
+                            >
+                                <Settings className="w-5 h-5 mr-3" />
+                                Profile Settings
                             </ResponsiveNavLink>
+
                             <ResponsiveNavLink
                                 method="post"
                                 href={route('logout')}
                                 as="button"
+                                className="flex items-center w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-200"
                             >
-                                Log Out
+                                <LogOut className="w-5 h-5 mr-3" />
+                                Sign Out
                             </ResponsiveNavLink>
                         </div>
                     </div>
                 </div>
-            </nav>
+            </header>
 
-            {header && (
-                <header className="bg-white shadow">
-                    <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                        {header}
-                    </div>
-                </header>
-            )}
-
-            <main>{children}</main>
+            {/* Content Area */}
+            <main className="flex-1">
+                {children}
+            </main>
         </div>
     );
 }

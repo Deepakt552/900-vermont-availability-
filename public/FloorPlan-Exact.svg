@@ -1,0 +1,186 @@
+<svg width="964" height="482" viewBox="0 0 964 482" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="964" height="482" fill="#e5e5e5"/>
+  
+  <!-- Street Label -->
+  <text x="482" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">JAMES M WOOD BOULEVARD</text>
+  
+  <!-- Side Label -->
+  <text x="25" y="241" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333" transform="rotate(-90, 25, 241)">SOUTH VERMONT AVENUE</text>
+  
+  <!-- North Arrow -->
+  <g transform="translate(930, 320)">
+    <polygon points="0,-15 8,8 0,4 -8,8" fill="#333"/>
+    <text x="0" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">N</text>
+  </g>
+  
+  <!-- Building Outline -->
+  <path fill="none" stroke="#333" stroke-width="2" d="M68,60 L68,150 L93,150 L93,175 L68,175 L68,220 L118,220 L118,175 L143,175 L143,220 L168,220 L168,175 L218,175 L218,200 L268,200 L268,175 L318,175 L318,200 L368,200 L368,175 L378,175 L378,200 L388,200 L388,175 L413,175 L413,200 L463,200 L463,175 L513,175 L513,200 L563,200 L563,175 L573,175 L573,60 L738,60 L738,85 L813,85 L813,110 L838,110 L838,135 L813,135 L813,160 L838,160 L838,185 L813,185 L813,210 L838,210 L838,235 L813,235 L813,260 L838,260 L838,285 L813,285 L813,310 L838,310 L838,335 L813,335 L813,360 L738,360 L738,335 L713,335 L713,310 L688,310 L688,285 L663,285 L663,310 L638,310 L638,285 L613,285 L613,310 L588,310 L588,285 L563,285 L563,310 L538,310 L538,285 L513,285 L513,310 L488,310 L488,285 L463,285 L463,310 L438,310 L438,285 L413,285 L413,310 L388,310 L388,285 L378,285 L378,310 L368,310 L368,285 L343,285 L343,310 L318,310 L318,285 L293,285 L293,310 L268,310 L268,285 L243,285 L243,310 L218,310 L218,285 L193,285 L193,310 L168,310 L168,285 L143,285 L143,310 L118,310 L118,285 L93,285 L93,310 L68,310 L68,360 L93,360 L93,385 L68,385 L68,430 L573,430 L573,360 L738,360"/>
+  
+  <!-- Unit 201 -->
+  <rect x="93" y="110" width="50" height="40" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="201"/>
+  <text x="118" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">201</text>
+  
+  <!-- Unit 202 -->
+  <rect x="93" y="175" width="50" height="45" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="202"/>
+  <text x="118" y="202" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">202</text>
+  
+  <!-- Unit 203 -->
+  <rect x="143" y="175" width="50" height="45" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="203"/>
+  <text x="168" y="202" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">203</text>
+  
+  <!-- Unit 204 (Available - Green) -->
+  <rect x="193" y="160" width="50" height="60" fill="#93b4ab" stroke="#333" stroke-width="1" data-unit="204"/>
+  <text x="218" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">204</text>
+  
+  <!-- Unit 205 -->
+  <rect x="243" y="160" width="50" height="60" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="205"/>
+  <text x="268" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">205</text>
+  
+  <!-- Unit 206 -->
+  <rect x="293" y="160" width="50" height="60" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="206"/>
+  <text x="318" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">206</text>
+  
+  <!-- Unit 207 -->
+  <rect x="343" y="160" width="50" height="60" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="207"/>
+  <text x="368" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">207</text>
+  
+  <!-- Elevators -->
+  <rect x="393" y="175" width="15" height="30" fill="#d3d3d3" stroke="#333" stroke-width="1"/>
+  <text x="400" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#333">E</text>
+  <rect x="408" y="175" width="15" height="30" fill="#d3d3d3" stroke="#333" stroke-width="1"/>
+  <text x="415" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#333">E</text>
+  
+  <!-- Unit 208 -->
+  <rect x="343" y="235" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="208"/>
+  <text x="368" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">208</text>
+  
+  <!-- Unit 209 -->
+  <rect x="393" y="235" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="209"/>
+  <text x="418" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">209</text>
+  
+  <!-- Unit 210 -->
+  <rect x="443" y="235" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="210"/>
+  <text x="468" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">210</text>
+  
+  <!-- Unit 211 (Available - Green) -->
+  <rect x="493" y="235" width="50" height="50" fill="#93b4ab" stroke="#333" stroke-width="1" data-unit="211"/>
+  <text x="518" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">211</text>
+  
+  <!-- Unit 212 -->
+  <rect x="543" y="235" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="212"/>
+  <text x="568" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">212</text>
+  
+  <!-- Unit 213 -->
+  <rect x="593" y="235" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="213"/>
+  <text x="618" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">213</text>
+  
+  <!-- Unit 214 -->
+  <rect x="643" y="235" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="214"/>
+  <text x="668" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">214</text>
+  
+  <!-- Unit 215 -->
+  <rect x="693" y="235" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="215"/>
+  <text x="718" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">215</text>
+  
+  <!-- Unit 216 -->
+  <rect x="743" y="235" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="216"/>
+  <text x="768" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">216</text>
+  
+  <!-- Unit 217 -->
+  <rect x="793" y="285" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="217"/>
+  <text x="818" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">217</text>
+  
+  <!-- Unit 218 -->
+  <rect x="793" y="235" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="218"/>
+  <text x="818" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">218</text>
+  
+  <!-- Unit 219 -->
+  <rect x="793" y="185" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="219"/>
+  <text x="818" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">219</text>
+  
+  <!-- Unit 220 -->
+  <rect x="793" y="135" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="220"/>
+  <text x="818" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">220</text>
+  
+  <!-- Unit 221 -->
+  <rect x="793" y="110" width="50" height="25" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="221"/>
+  <text x="818" y="127" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">221</text>
+  
+  <!-- Unit 222 -->
+  <rect x="743" y="85" width="50" height="25" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="222"/>
+  <text x="768" y="102" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">222</text>
+  
+  <!-- Unit 223 -->
+  <rect x="693" y="85" width="50" height="25" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="223"/>
+  <text x="718" y="102" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">223</text>
+  
+  <!-- Unit 224 -->
+  <rect x="743" y="135" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="224"/>
+  <text x="768" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">224</text>
+  
+  <!-- Unit 225 -->
+  <rect x="693" y="185" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="225"/>
+  <text x="718" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">225</text>
+  
+  <!-- Elevator (Right) -->
+  <rect x="743" y="185" width="15" height="30" fill="#d3d3d3" stroke="#333" stroke-width="1"/>
+  <text x="750" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#333">E</text>
+  
+  <!-- Unit 226 -->
+  <rect x="643" y="185" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="226"/>
+  <text x="668" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">226</text>
+  
+  <!-- Unit 227 -->
+  <rect x="593" y="185" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="227"/>
+  <text x="618" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">227</text>
+  
+  <!-- Unit 228 -->
+  <rect x="543" y="185" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="228"/>
+  <text x="568" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">228</text>
+  
+  <!-- Unit 229 -->
+  <rect x="493" y="185" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="229"/>
+  <text x="518" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">229</text>
+  
+  <!-- Unit 230 -->
+  <rect x="443" y="185" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="230"/>
+  <text x="468" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">230</text>
+  
+  <!-- Unit 231 -->
+  <rect x="493" y="135" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="231"/>
+  <text x="518" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">231</text>
+  
+  <!-- Top Row Units -->
+  <!-- Unit 232 -->
+  <rect x="493" y="85" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="232"/>
+  <text x="518" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">232</text>
+  
+  <!-- Unit 233 -->
+  <rect x="443" y="85" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="233"/>
+  <text x="468" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">233</text>
+  
+  <!-- Unit 234 -->
+  <rect x="393" y="85" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="234"/>
+  <text x="418" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">234</text>
+  
+  <!-- Unit 235 -->
+  <rect x="343" y="85" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="235"/>
+  <text x="368" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">235</text>
+  
+  <!-- Unit 236 -->
+  <rect x="293" y="85" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="236"/>
+  <text x="318" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">236</text>
+  
+  <!-- Unit 237 -->
+  <rect x="243" y="85" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="237"/>
+  <text x="268" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">237</text>
+  
+  <!-- Unit 238 -->
+  <rect x="193" y="85" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="238"/>
+  <text x="218" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">238</text>
+  
+  <!-- Unit 239 -->
+  <rect x="143" y="85" width="50" height="50" fill="#ffffff" stroke="#333" stroke-width="1" data-unit="239"/>
+  <text x="168" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">239</text>
+</svg>
