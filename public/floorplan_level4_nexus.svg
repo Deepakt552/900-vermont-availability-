@@ -1,167 +1,163 @@
 <svg width="1400" height="880" viewBox="0 0 1400 880" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
-  <rect x="0" y="0" width="1400" height="880" fill="#ffffff"/>
-  <defs>
-    <style>
-      .wall { fill:none; stroke:#111; stroke-width:3; stroke-linejoin:round; }
-      .partition { fill:none; stroke:#333; stroke-width:1.4; }
-      .room { fill:#f7f7f7; stroke:#333; stroke-width:1.2; }
-      .roomAlt { fill:#eef2f6; stroke:#333; stroke-width:1.2; }
-      .lid { fill:#e3e3e3; stroke:#666; stroke-width:1; }
-      .voidzone { fill:#fbfbfb; stroke:#999; stroke-width:1.2; stroke-dasharray:6 4; }
-      .grid { stroke:#9aa; stroke-width:1; stroke-dasharray:4 4; }
-      .bubble { fill:#ffffff; stroke:#111; stroke-width:1.4; }
-      .label-room { font-size:14px; font-weight:700; fill:#111; text-anchor:middle; }
-      .label-sub { font-size:11px; fill:#333; text-anchor:middle; }
-      .label-small { font-size:8.5px; fill:#333; text-anchor:middle; }
-      .label-tag { font-size:11px; fill:#111; text-anchor:middle; }
-      .label-title { font-size:22px; fill:#111; font-weight:800; }
-    </style>
-  </defs>
-
-  <text x="40" y="35" class="label-title">LEVEL 4 FLOOR PLAN</text>
-
-  <g transform="translate(1330,45)">
-    <circle cx="0" cy="0" r="24" fill="#fff" stroke="#111" stroke-width="1.3"/>
-    <polygon points="0,-18 5,4 0,-2 -5,4" fill="#111"/>
-    <text x="0" y="16" text-anchor="middle" font-size="10" font-weight="700">N</text>
+<rect x="0" y="0" width="1400" height="880" fill="#ffffff"/>
+<defs><style>
+.wall { fill:none; stroke:#111; stroke-width:3; stroke-linejoin:round; }
+.partition { fill:none; stroke:#333; stroke-width:1.4; }
+.room { fill:#f7f7f7; stroke:#333; stroke-width:1.2; }
+.roomAlt { fill:#eef2f6; stroke:#333; stroke-width:1.2; }
+.lid { fill:#e3e3e3; stroke:#666; stroke-width:1; }
+.openspace { fill:#f2f7f2; stroke:#2f7d32; stroke-width:1.4; stroke-dasharray:6 4; }
+.parkingzone { fill:#eef3fb; stroke:#1565c0; stroke-width:1.4; stroke-dasharray:5 4; }
+.stall { fill:#ffffff; stroke:#555; stroke-width:1; }
+.grid { stroke:#9aa; stroke-width:1; stroke-dasharray:4 4; }
+.bubble { fill:#ffffff; stroke:#111; stroke-width:1.4; }
+.label-room { font-size:14px; font-weight:700; fill:#111; text-anchor:middle; }
+.label-sub { font-size:11px; fill:#333; text-anchor:middle; }
+.label-small { font-size:8.5px; fill:#333; text-anchor:middle; }
+.label-tag { font-size:11px; fill:#111; text-anchor:middle; }
+.label-title { font-size:22px; fill:#111; font-weight:800; }
+.door { fill:none; stroke:#555; stroke-width:1; }
+.doorleaf { stroke:#555; stroke-width:1.3; }
+</style>
+<symbol id="stairSym" viewBox="0 0 60 100" preserveAspectRatio="none">
+  <rect x="1" y="1" width="58" height="98" fill="#eef2f6" stroke="#333" stroke-width="1.5"/>
+  <g stroke="#333" stroke-width="1">
+    <line x1="6" y1="12" x2="54" y2="12"/><line x1="6" y1="20" x2="54" y2="20"/>
+    <line x1="6" y1="28" x2="54" y2="28"/><line x1="6" y1="36" x2="54" y2="36"/>
+    <line x1="6" y1="44" x2="54" y2="44"/><line x1="6" y1="52" x2="54" y2="52"/>
+    <line x1="6" y1="60" x2="54" y2="60"/><line x1="6" y1="68" x2="54" y2="68"/>
+    <line x1="6" y1="76" x2="54" y2="76"/><line x1="6" y1="84" x2="54" y2="84"/>
   </g>
-
-  <!-- top grid -->
-  <line x1="150" y1="110" x2="150" y2="760" class="grid"/>
-  <circle cx="150" cy="105" r="15" class="bubble"/><text x="150" y="109" class="label-tag">15</text>
-  <line x1="228" y1="110" x2="228" y2="760" class="grid"/>
-  <circle cx="228" cy="105" r="15" class="bubble"/><text x="228" y="109" class="label-tag" font-size="9">X8</text>
-  <line x1="256" y1="110" x2="256" y2="760" class="grid"/>
-  <circle cx="256" cy="105" r="15" class="bubble"/><text x="256" y="109" class="label-tag" font-size="9">X7</text>
-  <line x1="1180" y1="110" x2="1180" y2="760" class="grid"/>
-  <circle cx="1180" cy="105" r="15" class="bubble"/><text x="1180" y="109" class="label-tag">1</text>
-
-  <!-- left grid -->
-  <line x1="100" y1="185" x2="1230" y2="185" class="grid"/>
-  <circle cx="70" cy="185" r="14" class="bubble"/><text x="70" y="189" class="label-tag">F</text>
-  <line x1="100" y1="290" x2="1230" y2="290" class="grid"/>
-  <circle cx="70" cy="290" r="14" class="bubble"/><text x="70" y="294" class="label-tag" font-size="8.5">XE.2</text>
-  <line x1="100" y1="322" x2="1230" y2="322" class="grid"/>
-  <circle cx="70" cy="322" r="14" class="bubble"/><text x="70" y="326" class="label-tag" font-size="9">XE</text>
-  <line x1="100" y1="388" x2="1230" y2="388" class="grid"/>
-  <circle cx="70" cy="388" r="14" class="bubble"/><text x="70" y="392" class="label-tag" font-size="9">XD</text>
-  <line x1="100" y1="440" x2="1230" y2="440" class="grid"/>
-  <circle cx="70" cy="440" r="14" class="bubble"/><text x="70" y="444" class="label-tag" font-size="9">XC</text>
-  <line x1="100" y1="570" x2="1230" y2="570" class="grid"/>
-  <circle cx="70" cy="570" r="14" class="bubble"/><text x="70" y="574" class="label-tag" font-size="9">XB</text>
-  <circle cx="1260" cy="570" r="14" class="bubble"/><text x="1260" y="574" class="label-tag" font-size="9">XB</text>
-  <line x1="100" y1="602" x2="1230" y2="602" class="grid"/>
-  <circle cx="70" cy="602" r="14" class="bubble"/><text x="70" y="606" class="label-tag" font-size="9">XA</text>
-  <circle cx="1260" cy="602" r="14" class="bubble"/><text x="1260" y="606" class="label-tag" font-size="9">XA</text>
-  <line x1="100" y1="745" x2="1230" y2="745" class="grid"/>
-  <circle cx="70" cy="745" r="14" class="bubble"/><text x="70" y="749" class="label-tag">A</text>
-
-  <!-- building outline -->
-  <path class="wall" d="M150,180
-      L150,130 L330,130 L330,440
-      L830,440
-      L940,530
-      L1150,530
-      Q1220,530 1220,600
-      L1220,655
-      L1150,710
-      L340,710
-      L150,710
-      Q95,710 95,655
-      L95,570
-      Q95,520 150,510
-      Z" fill="#ffffff"/>
-
-  <!-- adjacent building context -->
-  <rect x="360" y="185" width="820" height="240" class="voidzone"/>
-  <text x="770" y="300" class="label-sub" font-style="italic">(E) 2-STORY BUILDING</text>
-  <text x="770" y="316" class="label-small">(shown for context only)</text>
-
-  <!-- left wing units -->
-  <rect x="150" y="130" width="90" height="115" class="room" data-unit="403"/>
-  <text x="195" y="182" class="label-room">UNIT E</text><text x="195" y="199" class="label-sub">403</text>
-  <rect x="240" y="130" width="90" height="115" class="room" data-unit="402"/>
-  <text x="285" y="182" class="label-room">UNIT P</text><text x="285" y="199" class="label-sub">402</text>
-
-  <line x1="150" y1="245" x2="330" y2="245" class="partition"/>
-  <rect x="150" y="245" width="90" height="105" class="room" data-unit="404"/>
-  <text x="195" y="292" class="label-room">UNIT D</text><text x="195" y="309" class="label-sub">404</text>
-  <rect x="240" y="245" width="90" height="105" class="room" data-unit="401"/>
-  <text x="285" y="292" class="label-room">UNIT C</text><text x="285" y="309" class="label-sub">401</text>
-
-  <line x1="150" y1="350" x2="330" y2="350" class="partition"/>
-  <rect x="150" y="350" width="90" height="90" class="room" data-unit="405"/>
-  <text x="195" y="390" class="label-room">UNIT D</text><text x="195" y="407" class="label-sub">405</text>
-  <rect x="240" y="350" width="90" height="48" class="roomAlt"/>
-  <text x="285" y="378" class="label-sub" font-weight="700">STAIR A</text>
-  <rect x="240" y="398" width="90" height="42" class="roomAlt"/>
-  <text x="285" y="423" class="label-sub" font-weight="700">ELEV</text>
-
-  <line x1="150" y1="440" x2="330" y2="440" class="partition"/>
-  <rect x="150" y="440" width="180" height="70" class="room" data-unit="406"/>
-  <text x="240" y="470" class="label-room">UNIT F</text><text x="240" y="487" class="label-sub">406</text>
-
-  <rect x="150" y="510" width="180" height="60" class="room" data-unit="407"/>
-  <text x="240" y="534" class="label-room">UNIT J</text><text x="240" y="551" class="label-sub">407</text>
-
-  <!-- corridor -->
-  <rect x="150" y="570" width="1030" height="32" fill="#fafafa" stroke="#888" stroke-width="1"/>
-  <text x="665" y="590" class="label-small" font-style="italic">CORRIDOR</text>
-
-  <!-- lower row A/A/A/O/O/M -->
-  <rect x="330" y="602" width="115" height="108" class="room" data-unit="408"/>
-  <text x="387" y="650" class="label-room">UNIT A</text><text x="387" y="667" class="label-sub">408</text>
-  <line x1="445" y1="602" x2="445" y2="710" class="partition"/>
-  <rect x="445" y="602" width="115" height="108" class="room" data-unit="409"/>
-  <text x="502" y="650" class="label-room">UNIT A</text><text x="502" y="667" class="label-sub">409</text>
-  <line x1="560" y1="602" x2="560" y2="710" class="partition"/>
-  <rect x="560" y="602" width="115" height="108" class="room" data-unit="410"/>
-  <text x="617" y="650" class="label-room">UNIT A</text><text x="617" y="667" class="label-sub">410</text>
-  <line x1="675" y1="602" x2="675" y2="710" class="partition"/>
-  <rect x="675" y="602" width="115" height="108" class="room" data-unit="411"/>
-  <text x="732" y="650" class="label-room">UNIT O</text><text x="732" y="667" class="label-sub">411</text>
-  <line x1="790" y1="602" x2="790" y2="710" class="partition"/>
-  <rect x="790" y="602" width="115" height="108" class="room" data-unit="412"/>
-  <text x="847" y="650" class="label-room">UNIT O</text><text x="847" y="667" class="label-sub">412</text>
-  <line x1="905" y1="602" x2="905" y2="710" class="partition"/>
-  <rect x="905" y="602" width="205" height="108" class="room" data-unit="413"/>
-  <text x="1007" y="650" class="label-room">UNIT M</text><text x="1007" y="667" class="label-sub">413</text>
-
-  <!-- upper row B/B/B/B/StairB/N/M -->
-  <rect x="330" y="440" width="115" height="122" class="room" data-unit="419"/>
-  <text x="387" y="495" class="label-room">UNIT B</text><text x="387" y="512" class="label-sub">419</text>
-  <line x1="445" y1="440" x2="445" y2="562" class="partition"/>
-  <rect x="445" y="440" width="115" height="122" class="room" data-unit="418"/>
-  <text x="502" y="495" class="label-room">UNIT B</text><text x="502" y="512" class="label-sub">418</text>
-  <line x1="560" y1="440" x2="560" y2="562" class="partition"/>
-  <rect x="560" y="440" width="115" height="122" class="room" data-unit="417"/>
-  <text x="617" y="495" class="label-room">UNIT B</text><text x="617" y="512" class="label-sub">417</text>
-  <line x1="675" y1="440" x2="675" y2="562" class="partition"/>
-  <rect x="675" y="440" width="115" height="122" class="room" data-unit="416"/>
-  <text x="732" y="495" class="label-room">UNIT B</text><text x="732" y="512" class="label-sub">416</text>
-  <line x1="790" y1="440" x2="790" y2="562" class="partition"/>
-  <rect x="790" y="440" width="65" height="122" class="roomAlt"/>
-  <text x="822" y="505" class="label-sub" font-weight="700">STAIR B</text>
-  <line x1="855" y1="440" x2="855" y2="562" class="partition"/>
-  <rect x="855" y="440" width="115" height="122" class="room" data-unit="415"/>
-  <text x="912" y="495" class="label-room">UNIT N</text><text x="912" y="512" class="label-sub">415</text>
-  <line x1="970" y1="440" x2="970" y2="562" class="partition"/>
-  <rect x="970" y="440" width="140" height="122" class="room" data-unit="414"/>
-  <text x="1040" y="495" class="label-room">UNIT M</text><text x="1040" y="512" class="label-sub">414</text>
-
-  <!-- LID -->
-  <rect x="200" y="220" width="16" height="16" class="lid"/><text x="208" y="232" class="label-small" font-size="7">LID</text>
-  <rect x="332" y="565" width="16" height="16" class="lid"/><text x="340" y="577" class="label-small" font-size="7">LID</text>
-  <rect x="447" y="565" width="16" height="16" class="lid"/><text x="455" y="577" class="label-small" font-size="7">LID</text>
-  <rect x="562" y="565" width="16" height="16" class="lid"/><text x="570" y="577" class="label-small" font-size="7">LID</text>
-  <rect x="677" y="565" width="16" height="16" class="lid"/><text x="685" y="577" class="label-small" font-size="7">LID</text>
-
-  <!-- small legend -->
-  <g transform="translate(40,780)">
-    <rect x="0" y="0" width="420" height="70" fill="#fff" stroke="#111" stroke-width="1"/>
-    <rect x="10" y="12" width="14" height="14" class="lid"/><text x="32" y="23" font-size="10">LID (light well)</text>
-    <rect x="180" y="12" width="14" height="14" class="roomAlt"/><text x="202" y="23" font-size="10">Stair / Elevator</text>
-    <circle cx="17" cy="42" r="8" class="bubble"/><text x="32" y="46" font-size="10">Grid reference</text>
-    <text x="10" y="62" font-size="9" fill="#555">Units: E, P, D&#215;2, C, F, J, A&#215;3, O&#215;2, B&#215;4, N, M&#215;2</text>
-  </g>
+  <line x1="30" y1="90" x2="30" y2="18" stroke="#111" stroke-width="1.8"/>
+  <polygon points="30,10 24,22 36,22" fill="#111"/>
+  <text x="30" y="8" text-anchor="middle" font-size="9" font-weight="700" fill="#111">UP</text>
+</symbol>
+<symbol id="elevSym" viewBox="0 0 60 60" preserveAspectRatio="none">
+  <rect x="1" y="1" width="58" height="58" fill="#eef2f6" stroke="#333" stroke-width="1.5"/>
+  <line x1="1" y1="1" x2="59" y2="59" stroke="#999" stroke-width="1"/>
+  <line x1="59" y1="1" x2="1" y2="59" stroke="#999" stroke-width="1"/>
+  <rect x="13" y="13" width="34" height="34" fill="#ffffff" stroke="#333" stroke-width="1.3"/>
+  <line x1="30" y1="13" x2="30" y2="47" stroke="#333" stroke-width="1.2"/>
+  <polygon points="30,17 27,22 33,22" fill="#333"/>
+  <polygon points="30,43 27,38 33,38" fill="#333"/>
+</symbol>
+<symbol id="doorSym" viewBox="0 0 24 24" preserveAspectRatio="none">
+  <path d="M0,0 A24,24 0 0 1 24,24" fill="none" stroke="#666" stroke-width="0.9"/>
+  <line x1="0" y1="0" x2="0" y2="24" stroke="#555" stroke-width="1.4"/>
+</symbol>
+</defs>
+<text x="40" y="35" class="label-title">LEVEL 4 FLOOR PLAN</text>
+<text x="40" y="53" font-size="10.5" fill="#555">Doors, stairs, and elevator shown for wayfinding clarity — not to scale</text>
+<g transform="translate(1330,45)">
+      <circle cx="0" cy="0" r="24" fill="#fff" stroke="#111" stroke-width="1.3"/>
+      <polygon points="0,-18 5,4 0,-2 -5,4" fill="#111"/>
+      <text x="0" y="16" text-anchor="middle" font-size="10" font-weight="700">N</text>
+    </g>
+<line x1="150" y1="110" x2="150" y2="760" class="grid"/><circle cx="150" cy="105" r="15" class="bubble"/><text x="150" y="109" class="label-tag" font-size="11">15</text>
+<line x1="228" y1="110" x2="228" y2="760" class="grid"/><circle cx="228" cy="105" r="15" class="bubble"/><text x="228" y="109" class="label-tag" font-size="9">X8</text>
+<line x1="256" y1="110" x2="256" y2="760" class="grid"/><circle cx="256" cy="105" r="15" class="bubble"/><text x="256" y="109" class="label-tag" font-size="9">X7</text>
+<line x1="1180" y1="110" x2="1180" y2="760" class="grid"/><circle cx="1180" cy="105" r="15" class="bubble"/><text x="1180" y="109" class="label-tag" font-size="11">1</text>
+<line x1="100" y1="185" x2="1230" y2="185" class="grid"/><circle cx="70" cy="185" r="14" class="bubble"/><text x="70" y="189" class="label-tag" font-size="11">F</text>
+<line x1="100" y1="290" x2="1230" y2="290" class="grid"/><circle cx="70" cy="290" r="14" class="bubble"/><text x="70" y="294" class="label-tag" font-size="8.5">XE.2</text>
+<line x1="100" y1="322" x2="1230" y2="322" class="grid"/><circle cx="70" cy="322" r="14" class="bubble"/><text x="70" y="326" class="label-tag" font-size="9">XE</text>
+<line x1="100" y1="388" x2="1230" y2="388" class="grid"/><circle cx="70" cy="388" r="14" class="bubble"/><text x="70" y="392" class="label-tag" font-size="9">XD</text>
+<line x1="100" y1="440" x2="1230" y2="440" class="grid"/><circle cx="70" cy="440" r="14" class="bubble"/><text x="70" y="444" class="label-tag" font-size="9">XC</text>
+<line x1="100" y1="570" x2="1230" y2="570" class="grid"/><circle cx="70" cy="570" r="14" class="bubble"/><text x="70" y="574" class="label-tag" font-size="9">XB</text>
+<line x1="100" y1="602" x2="1230" y2="602" class="grid"/><circle cx="70" cy="602" r="14" class="bubble"/><text x="70" y="606" class="label-tag" font-size="9">XA</text>
+<line x1="100" y1="745" x2="1230" y2="745" class="grid"/><circle cx="70" cy="745" r="14" class="bubble"/><text x="70" y="749" class="label-tag" font-size="11">A</text>
+<circle cx="1260" cy="570" r="14" class="bubble"/><text x="1260" y="574" class="label-tag" font-size="9">XB</text>
+<circle cx="1260" cy="602" r="14" class="bubble"/><text x="1260" y="606" class="label-tag" font-size="9">XA</text>
+<path class="wall" d="M150,180
+        L150,130 L330,130 L330,440
+        L830,440
+        L940,530
+        L1150,530
+        Q1220,530 1220,600
+        L1220,655
+        L1150,710
+        L340,710
+        L150,710
+        Q95,710 95,655
+        L95,570
+        Q95,520 150,510
+        Z" fill="#ffffff"/>
+<rect x="360" y="185" width="820" height="240" style="fill:#fbfbfb;stroke:#999;stroke-width:1.2;stroke-dasharray:6 4;"/>
+<text x="770" y="300" class="label-sub" font-style="italic">(E) 2-STORY BUILDING</text>
+<text x="770" y="316" class="label-small">(shown for context only)</text>
+<rect x="150" y="130" width="90" height="115" class="room" data-unit="403"/><text x="195" y="182" class="label-room">UNIT E</text><text x="195" y="199" class="label-sub">403</text>
+<rect x="240" y="130" width="90" height="115" class="room" data-unit="402"/><text x="285" y="182" class="label-room">UNIT P</text><text x="285" y="199" class="label-sub">402</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(195,245) rotate(0) scale(1,1)"/>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(285,245) rotate(0) scale(1,1)"/>
+<line x1="150" y1="245" x2="330" y2="245" class="partition"/>
+<rect x="150" y="245" width="90" height="105" class="room" data-unit="404"/><text x="195" y="292" class="label-room">UNIT D</text><text x="195" y="309" class="label-sub">404</text>
+<rect x="240" y="245" width="90" height="105" class="room" data-unit="401"/><text x="285" y="292" class="label-room">UNIT C</text><text x="285" y="309" class="label-sub">401</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(195,350) rotate(0) scale(1,1)"/>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(285,350) rotate(0) scale(1,1)"/>
+<line x1="150" y1="350" x2="330" y2="350" class="partition"/>
+<rect x="150" y="350" width="90" height="90" class="room" data-unit="405"/><text x="195" y="390" class="label-room">UNIT D</text><text x="195" y="407" class="label-sub">405</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(195,440) rotate(0) scale(1,1)"/>
+<use href="#stairSym" x="243" y="352" width="44" height="60"/>
+  <text x="265.0" y="423" class="label-sub" font-weight="700" font-size="10">STAIR A</text>
+<use href="#elevSym" x="243" y="414" width="44" height="26"/>
+  <text x="265.0" y="451" class="label-sub" font-weight="700" font-size="10">ELEV</text>
+<line x1="150" y1="440" x2="330" y2="440" class="partition"/>
+<rect x="150" y="440" width="180" height="70" class="room" data-unit="406"/><text x="240" y="470" class="label-room">UNIT F</text><text x="240" y="487" class="label-sub">406</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(240,510) rotate(0) scale(1,1)"/>
+<rect x="150" y="510" width="180" height="60" class="room" data-unit="407"/><text x="240" y="534" class="label-room">UNIT J</text><text x="240" y="551" class="label-sub">407</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(240,570) rotate(0) scale(1,1)"/>
+<rect x="150" y="570" width="1030" height="32" fill="#fafafa" stroke="#888" stroke-width="1"/><text x="665" y="590" class="label-small" font-style="italic">CORRIDOR</text>
+<rect x="330" y="602" width="115" height="108" class="room" data-unit="408"/><text x="387.5" y="650" class="label-room">UNIT A</text><text x="387.5" y="667" class="label-sub">408</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(387.5,602) rotate(0) scale(1,1)"/>
+<rect x="445" y="602" width="115" height="108" class="room" data-unit="409"/><text x="502.5" y="650" class="label-room">UNIT A</text><text x="502.5" y="667" class="label-sub">409</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(502.5,602) rotate(0) scale(1,1)"/>
+<rect x="560" y="602" width="115" height="108" class="room" data-unit="410"/><text x="617.5" y="650" class="label-room">UNIT A</text><text x="617.5" y="667" class="label-sub">410</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(617.5,602) rotate(0) scale(1,1)"/>
+<rect x="675" y="602" width="115" height="108" class="room" data-unit="411"/><text x="732.5" y="650" class="label-room">UNIT O</text><text x="732.5" y="667" class="label-sub">411</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(732.5,602) rotate(0) scale(1,1)"/>
+<rect x="790" y="602" width="115" height="108" class="room" data-unit="412"/><text x="847.5" y="650" class="label-room">UNIT O</text><text x="847.5" y="667" class="label-sub">412</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(847.5,602) rotate(0) scale(1,1)"/>
+<rect x="905" y="602" width="205" height="108" class="room" data-unit="413"/><text x="1007.5" y="650" class="label-room">UNIT M</text><text x="1007.5" y="667" class="label-sub">413</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(1007.5,602) rotate(0) scale(1,1)"/>
+<line x1="445" y1="602" x2="445" y2="710" class="partition"/>
+<line x1="560" y1="602" x2="560" y2="710" class="partition"/>
+<line x1="675" y1="602" x2="675" y2="710" class="partition"/>
+<line x1="790" y1="602" x2="790" y2="710" class="partition"/>
+<line x1="905" y1="602" x2="905" y2="710" class="partition"/>
+<rect x="330.0" y="440" width="92.0" height="122" class="room" data-unit="420"/><text x="376.0" y="495" class="label-room">UNIT B</text><text x="376.0" y="512" class="label-sub">420</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(376.0,562) rotate(180) scale(1,1)"/>
+<rect x="422.0" y="440" width="92.0" height="122" class="room" data-unit="419"/><text x="468.0" y="495" class="label-room">UNIT B</text><text x="468.0" y="512" class="label-sub">419</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(468.0,562) rotate(180) scale(1,1)"/>
+<rect x="514.0" y="440" width="92.0" height="122" class="room" data-unit="418"/><text x="560.0" y="495" class="label-room">UNIT B</text><text x="560.0" y="512" class="label-sub">418</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(560.0,562) rotate(180) scale(1,1)"/>
+<rect x="606.0" y="440" width="92.0" height="122" class="room" data-unit="417"/><text x="652.0" y="495" class="label-room">UNIT B</text><text x="652.0" y="512" class="label-sub">417</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(652.0,562) rotate(180) scale(1,1)"/>
+<rect x="698.0" y="440" width="92.0" height="122" class="room" data-unit="416"/><text x="744.0" y="495" class="label-room">UNIT B</text><text x="744.0" y="512" class="label-sub">416</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(744.0,562) rotate(180) scale(1,1)"/>
+<line x1="422.0" y1="440" x2="422.0" y2="562" class="partition"/>
+<line x1="514.0" y1="440" x2="514.0" y2="562" class="partition"/>
+<line x1="606.0" y1="440" x2="606.0" y2="562" class="partition"/>
+<line x1="698.0" y1="440" x2="698.0" y2="562" class="partition"/>
+<use href="#stairSym" x="792" y="442" width="63" height="118"/>
+  <text x="823.5" y="571" class="label-sub" font-weight="700" font-size="10">STAIR B</text>
+<line x1="855" y1="440" x2="855" y2="562" class="partition"/>
+<rect x="855" y="440" width="115" height="122" class="room" data-unit="415"/><text x="912" y="495" class="label-room">UNIT N</text><text x="912" y="512" class="label-sub">415</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(912,562) rotate(180) scale(1,1)"/>
+<line x1="970" y1="440" x2="970" y2="562" class="partition"/>
+<rect x="970" y="440" width="140" height="122" class="room" data-unit="414"/><text x="1040" y="495" class="label-room">UNIT M</text><text x="1040" y="512" class="label-sub">414</text>
+<use href="#doorSym" x="0" y="0" width="22" height="22" transform="translate(1040,562) rotate(180) scale(1,1)"/>
+<rect x="200" y="220" width="16" height="16" class="lid"/><text x="208" y="232" class="label-small" font-size="7">LID</text>
+<rect x="333.0" y="565" width="14" height="14" class="lid"/><text x="340.0" y="576" class="label-small" font-size="6.5">LID</text>
+<rect x="425.0" y="565" width="14" height="14" class="lid"/><text x="432.0" y="576" class="label-small" font-size="6.5">LID</text>
+<rect x="517.0" y="565" width="14" height="14" class="lid"/><text x="524.0" y="576" class="label-small" font-size="6.5">LID</text>
+<rect x="609.0" y="565" width="14" height="14" class="lid"/><text x="616.0" y="576" class="label-small" font-size="6.5">LID</text>
+<rect x="701.0" y="565" width="14" height="14" class="lid"/><text x="708.0" y="576" class="label-small" font-size="6.5">LID</text>
+<g transform="translate(40,780)">
+      <rect x="0" y="0" width="620" height="70" fill="#fff" stroke="#111" stroke-width="1"/>
+      <rect x="10" y="12" width="14" height="14" class="lid"/><text x="32" y="23" font-size="10">LID (light well)</text>
+      <use href="#stairSym" x="170" y="8" width="14" height="20"/><text x="192" y="23" font-size="10">Stair (arrow = up)</text>
+      <use href="#elevSym" x="340" y="8" width="18" height="18"/><text x="366" y="23" font-size="10">Elevator</text>
+      <path d="M470,12 A10,10 0 0 1 480,22" fill="none" stroke="#666" stroke-width="0.9"/><line x1="470" y1="12" x2="470" y2="22" stroke="#555" stroke-width="1.3"/>
+      <text x="490" y="23" font-size="10">Door swing</text>
+      <circle cx="17" cy="46" r="8" class="bubble"/><text x="32" y="50" font-size="10">Grid reference</text>
+    </g>
 </svg>

@@ -242,6 +242,28 @@ class NexusSeeder extends Seeder
                     ]
                 );
             }
+
+            // Level 4 has an extra unit: 420 (Unit Type B)
+            if ($floorNum === 4) {
+                $typeName = 'B';
+                $type = $unitTypes[$typeName];
+                $basePrice = $this->getBasePriceForType($typeName);
+
+                Unit::firstOrCreate(
+                    [
+                        'floor_id' => $floors[4]->id,
+                        'unit_number' => '420'
+                    ],
+                    [
+                        'unit_type_id' => $type->id,
+                        'status' => $statuses[array_rand($statuses)],
+                        'price' => $basePrice,
+                        'available_date' => now()->addDays(rand(0, 30)),
+                        'coordinates' => null,
+                        'notes' => "Convenient floor 4 living."
+                    ]
+                );
+            }
         }
     }
 
